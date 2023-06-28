@@ -23,8 +23,6 @@ public class controller {
         //request -> entity
         Post post = new Post(requestDto);
 
-
-
         // 중복되지 않는 id
         Long maxId = postList.size() > 0? Collections.max(postList.keySet())+1 : 1 ;
 
@@ -45,6 +43,7 @@ public class controller {
 
     @GetMapping("/posts") // 전체 조회
     public List<ResponseDto> getPost(){
+        // responsedto를 리스트로 만들어 그 모든값을 반환
         List<ResponseDto> reponseList = postList.values().stream()
                 .map(ResponseDto::new).toList();
         return reponseList;
