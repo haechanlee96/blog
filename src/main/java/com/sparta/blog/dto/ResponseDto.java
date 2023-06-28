@@ -10,17 +10,18 @@ import java.time.LocalDateTime;
 public class ResponseDto {
 
     private Long id;
-    private String username;
+    private String author;
     private String contents;
-    private String password;
+    private int password;
     private LocalDateTime date;
     private String title;
 
     public ResponseDto(Post post) {
         this.id = post.getId();
-        this.username = post.getUsername();
+        this.author = post.getAuthor();
         this.contents = post.getContents();
         this.title = post.getTitle();
         this.date = post.getDate();
+        this.password = post.getPassword();
     }
 }

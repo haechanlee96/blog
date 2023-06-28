@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 
 @Getter
 public class RequestDto {
-    private String username;
+    private String author;
     private String contents;
-    private String password;
+    private int password;
     private LocalDateTime date;
     private String title;
 }

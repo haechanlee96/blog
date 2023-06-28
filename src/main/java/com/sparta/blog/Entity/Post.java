@@ -14,19 +14,24 @@ import java.time.LocalDateTime;
 public class Post {
 
     private Long id;
-    private String username;
+    private String author;
     private String contents;
-    private String password;
+    private int password;
     private LocalDateTime date;
     private String title;
 
 
     public Post(RequestDto requestDto) {
-        this.username = requestDto.getUsername();
+        this.author = requestDto.getAuthor();
         this.contents = requestDto.getContents();
         this.password = requestDto.getPassword();
         this.title = requestDto.getTitle();
-
+        System.out.println("비밀번호 확인" + requestDto.getPassword());
     }
 
+    public void update(RequestDto requestDto) {
+        this.author = requestDto.getAuthor();
+        this.contents = requestDto.getContents();
+        this.title = requestDto.getTitle();
+    }
 }
