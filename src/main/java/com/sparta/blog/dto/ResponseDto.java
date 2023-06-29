@@ -13,7 +13,8 @@ public class ResponseDto {
     private String author;
     private String contents;
     private int password;
-    private LocalDateTime date;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
     private String title;
 
     public ResponseDto(Post post) {
@@ -21,7 +22,8 @@ public class ResponseDto {
         this.author = post.getAuthor();
         this.contents = post.getContents();
         this.title = post.getTitle();
-        this.date = post.getDate();
-        this.password = post.getPassword();
+        this.createdAt = post.getCreatedAt();
+        this.modifiedAt = post.getModifiedAt();
+
     }
 }
