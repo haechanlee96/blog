@@ -12,7 +12,7 @@ public class ResponseDto {
     private Long id;
     private String author;
     private String contents;
-    private int password;
+    private String password;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private String title;

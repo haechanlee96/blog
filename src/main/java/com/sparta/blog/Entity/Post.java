@@ -30,7 +30,7 @@ public class Post extends Timestamped {
     private String contents;
 
     @Column (name = "password", nullable = false)
-    private int password;
+    private String password;
 
     @Column (name = "title", nullable = false)
     private String title;
@@ -49,11 +49,11 @@ public class Post extends Timestamped {
         this.title = requestDto.getTitle();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public Long getId() {
+//        return id;
+//    }
 }

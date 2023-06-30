@@ -35,33 +35,39 @@ public class PostService {
 
 
     public ResponseDto getPost(Long id) { //게시글 선택 조회
-        Post post = postRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("선택한 메모가 존재하지 않습니다."));
-        return new ResponseDto(post);
+        Post post = findPost(id);
+        ResponseDto responseDto = new ResponseDto(post);
+        return responseDto;
     }
 
 
     public List<ResponseDto> getPosts() { //게시글 전체 조회
-        return postRepository.findAllByOrderByModifiedAtDesc().stream().map(ResponseDto::new).toList();
+        return postRepository.findAllByOrderByCreatedAtDesc().stream().map(ResponseDto::new).toList();
     }
 
     @Transactional
-    public Long updatePost(Long id, RequestDto requestDto){ //게시글 수정
+    public ResponseDto updatePost(Long id, RequestDto requestDto){ //게시글 수정
         // 해당 메모 DB에 존재 확인
         Post post = findPost(id);
+        if(post.getPassword().equals(requestDto.getPassword())){
+            post.update(requestDto);
+            return new ResponseDto(post);
+        } else {
+            throw new IllegalArgumentException("비밀번호가 다릅니다.");
+        }
 
-        // 해당 내용 수정
-        post.update(requestDto);
-        return id;
     }
 
-    public Long deletePost(Long id) {
+    public boolean deletePost(Long id, RequestDto requestDto) {
         // 해당 메모 DB에 존재 확인
         Post post = findPost(id);
+        if(post.getPassword().equals(requestDto.getPassword())){
+            postRepository.delete(post);
+        } else {
+            throw new IllegalArgumentException("비밀번호가 다릅니다.");
+        }
+        return true;
 
-        // 해당 내용 수정
-        postRepository.delete(post);
-        return id;
     }
 
     private Post findPost(Long id) { //게시글 찾는 메서드

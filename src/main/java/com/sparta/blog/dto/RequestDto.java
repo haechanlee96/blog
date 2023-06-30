@@ -1,5 +1,6 @@
 package com.sparta.blog.dto;
 
+import com.sparta.blog.Entity.Post;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 public class RequestDto {
     private String author;
     private String contents;
-    private int password;
+    private String password;
     private String title;
+
 }
